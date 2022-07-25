@@ -1,0 +1,37 @@
+<div
+  class="card"
+  [ngClass]="{
+    'bg-green': stock
+      ? stock.isActive && stock.regularMarketChangePercent > 0
+      : false,
+    'bg-red': stock
+      ? stock.isActive && stock.regularMarketChangePercent < 0
+      : false
+  }"
+>
+  <h2 class="mb-05">{{ stock?.symbol }}</h2>
+  <strong>Price</strong>
+  <div class="mb-05 fs-500">
+    <strong
+      >{{ stock?.currencySymbol }}{{ stock?.currentPrice | number }}</strong
+    >
+  </div>
+  <div class="fs-300 mb-1">
+    (<span>{{ stock?.currencySymbol }}{{ stock?.dayLow | number }}</span>
+    -
+    <span>{{ stock?.currencySymbol }}{{ stock?.dayHigh | number }}</span
+    >)
+  </div>
+  <strong class="hidden-in-mobile">52W High</strong>
+  <div class="mb-05 hidden-in-mobile">
+    {{ stock?.currencySymbol }}{{ stock?.fiftyTwoWeekHigh | number }}
+  </div>
+  <strong class="hidden-in-mobile">52W Low</strong>
+  <div class="hidden-in-mobile">
+    {{ stock?.currencySymbol }}{{ stock?.fiftyTwoWeekLow | number }}
+  </div>
+  <app-switch
+    [isActive]="stock?.isActive"
+    (switchClick)="onSwitchClick($event)"
+  ></app-switch>
+</div>

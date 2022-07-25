@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/socket.io": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "node-schedule": "^2.1.0",
+    "socket.io": "^4.5.1",
+    "yahoo-finance": "^0.3.7"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
+    "eslint": "^8.20.0"
+  }
+}

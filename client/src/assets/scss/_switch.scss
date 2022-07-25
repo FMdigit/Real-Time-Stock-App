@@ -1,0 +1,79 @@
+@import "./config";
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 85px;
+  height: 34px;
+  input {
+    width: 0;
+    height: 0;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: darken($color-gray, 25);
+  border-radius: 34px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  &:before {
+    position: absolute;
+    z-index: 10;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: darken($color-gray, 50);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+}
+
+input {
+  &:checked {
+    & + .slider {
+      background-color: $color-dark;
+      &:before {
+        background-color: $color-green;
+        -webkit-transform: translateX(50px);
+        -ms-transform: translateX(50px);
+        transform: translateX(50px);
+      }
+    }
+    &:after {
+      position: absolute;
+      content: "ON";
+      top: 7px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      left: 12px;
+      color: $color-green;
+      z-index: 10;
+    }
+  }
+  &:not(:checked):after {
+    position: absolute;
+    top: 7px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    content: "OFF";
+    right: 12px;
+    color: $color-light;
+    z-index: 10;
+  }
+  &:focus {
+    & + .slider {
+      box-shadow: 0 0 1px $color-dark;
+    }
+  }
+}

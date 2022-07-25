@@ -1,0 +1,140 @@
+%display-flex {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+}
+
+%justify-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+%justify-evenly {
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+%align-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+%flex-direction-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+%flex-direction-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+%flex-wrap {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+%d-flex-ceneter {
+  @extend %display-flex;
+  @extend %justify-center;
+  @extend %align-center;
+}
+
+@mixin bg-color-mixin($color) {
+  background-color: $color;
+}
+
+@mixin container-mixin($py, $px, $width, $height) {
+  @extend %d-flex-ceneter;
+  width: $width;
+  height: $height;
+  padding-top: $py;
+  padding-bottom: $py;
+  padding-left: $px;
+  padding-right: $px;
+  overflow: auto;
+}
+
+@mixin wraper-mobile-mixin() {
+  //can't extend in @media
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+@mixin wraper-mixin($direction, $width) {
+  @extend %display-flex;
+  @extend %align-center;
+  @extend %flex-wrap;
+  @if ($direction == row) {
+    @extend %flex-direction-row;
+    @extend %justify-evenly;
+  }
+  @if ($direction == column) {
+    @include wraper-mobile-mixin();
+  }
+  width: $width;
+}
+
+@mixin card-mixin($width, $height) {
+  @extend %d-flex-ceneter;
+  @extend %flex-direction-col;
+  width: $width;
+  height: $height;
+  background-color: $color-gray;
+  color: $color-dark;
+  border-radius: 10px;
+  flex-basis: 150px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.container {
+  @include container-mixin(20px, 0, $w-100vw, $h-100vh);
+}
+
+.wraper {
+  @include wraper-mixin(row, $w-700px);
+}
+
+.card {
+  @include card-mixin(150px, 290px);
+  div:last-of-type {
+    margin-bottom: 2rem;
+  }
+}
+
+.mb-05 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.fs-500 {
+  font-size: $fs-500;
+}
+
+.fs-300 {
+  font-size: $fs-300;
+}

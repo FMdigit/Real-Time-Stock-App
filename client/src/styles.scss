@@ -1,0 +1,46 @@
+@import "./assets/scss/config";
+@import "./assets/scss/utilities";
+@import "./assets/scss/mobile";
+@import "./assets/scss/switch";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: $font-stack;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  &:visited,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.bg-green {
+  @include bg-color-mixin($color-green);
+}
+
+.bg-red {
+  @include bg-color-mixin($color-red);
+}
+
+.bg-gray {
+  @include bg-color-mixin($color-gray);
+}

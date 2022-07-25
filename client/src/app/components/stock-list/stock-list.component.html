@@ -1,0 +1,7 @@
+<div class="wraper">
+  <app-stock-item
+    *ngFor="let stock of stocks"
+    [stock]="stock"
+    (switchClick)="onSwitchClick($event)"
+  ></app-stock-item>
+</div>
