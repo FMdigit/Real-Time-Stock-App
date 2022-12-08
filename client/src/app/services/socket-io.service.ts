@@ -14,7 +14,7 @@ export class SocketIoService {
     this.socket.emit(msg, data);
   }
 
-  // listen event
+  // listen event ...
   getMessage(msg: string): Observable<Stock[]> {
     return this.socket.fromEvent(msg);
   }
