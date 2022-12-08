@@ -9,12 +9,12 @@ import Stock from '../models/stock';
 export class SocketIoService {
   constructor(private socket: Socket) {}
 
-  // emit event ...
+  // emit event 
   sendMessage(msg: string, data?: string) {
     this.socket.emit(msg, data);
   }
 
-  // listen event
+  // listen event 
   getMessage(msg: string): Observable<Stock[]> {
     return this.socket.fromEvent(msg);
   }
